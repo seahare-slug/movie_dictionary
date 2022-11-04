@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ movie.title }}</h1>
+<div class="card-group">
+	<div class="card">
+		<div>개봉 날짜: [{{ movie.release_date }}]</div>
+		<div>인기도: [{{ movie.popularity }}]</div>
+		<div>투표수: [{{ movie.vote_count }}]</div>
+		<div>평점: [{{ movie.vote_average }}]</div>
+		<div>줄거리: [{{ movie.overview }}]</div>
+		{% for genre in genres %}
+			<span>장르: [{{genre}}]</span>
+		{% endfor %}
+		<img src="{{ movie.poster_path }}" alt="poster">
+	</div>
+</div>
+
+{% endblock %}

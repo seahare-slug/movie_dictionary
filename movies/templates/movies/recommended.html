@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="display: flex;">
+	<div style="margin: 100px;">
+	<h2>인기도순 추천</h2>
+	{% for movie_pk, movie_title, movie_popularity, movie_vote_average in vote_average_sorted_movies %}
+		<a href="{% url 'movies:detail' movie_pk %}">{{ movie_title }}</a>
+		<div>
+			인기도: {{movie_popularity}}
+		</div>
+		{% endfor %}
+	</div>
+	<div style="margin: 100px;">
+	<h2>평점순 추천</h2>
+		{% for movie_pk, movie_title, movie_popularity, movie_vote_average in popularity_sorted_movies %}
+			<a href="{% url 'movies:detail' movie_pk %}">{{ movie_title }}</a>
+			<div>
+				평점: {{movie_vote_average}}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
